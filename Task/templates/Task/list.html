@@ -1,0 +1,31 @@
+{% extends 'Task/base.html' %}
+<title>ListTask</title>
+
+{% block content %}
+
+    <h1>My Tasks </h1>
+    {% for task in tasks %}
+            <div class="row"  >
+                <div class="col-md-6">
+                    <div class="well">
+                        <div class=" task-card row  mt-4 pt-3 pb-2 pl-3 " >
+                          <p> {{ task.title }} </p>
+                        </div>
+                    <small>{{ task.timestamp | timesince }} ago</small>
+                        </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row mt-3">
+                        <form action="{% url 'task-delete' task.id %}" method="POST">
+                            {% csrf_token %}
+                        <button   class="btn btn-danger  mt-3  ml-2 p-2" type="submit" > Delete item</button>
+                        </form>
+                         <a  href="{% url 'task-update' task.id %}" class="btn btn-info  mt-3  ml-3 p-2" > update item </a>
+                        </div>
+                </div>
+            </div>
+    {% endfor %}
+      <a href="{% url 'task-create' %}" class="btn btn-dark mt-3  mb-2 ml-0" > Add Task</a>
+
+{% endblock %}

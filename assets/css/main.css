@@ -1,0 +1,13 @@
+body{
+    background: rgb(241,124,228);
+    background: linear-gradient(90deg, rgba(241,124,228,1) 5%, rgba(133,232,246,1) 86%, rgba(204,240,245,1) 93%);
+}
+
+.task-card
+{
+     background-color: #9fcdff;
+     border-radius: 5px;
+     word-spacing: 4px;
+     font-family:"Roboto", "Lucida Grande", Verdana, Arial, sans-serif ;
+     font-size: large;
+}
