@@ -3,13 +3,25 @@
 
 {% block content %}
 
-    <h1>My Tasks </h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h2  style="text-align: center">My Tasks </h2>
+        </div>
+        <div class="col-md-6">
+            <form action="{% url 'user-logout'%}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-secondary" type="submit"> Logout </button>
+            </form>
+        </div>
+    </div>
+
     {% for task in tasks %}
-            <div class="row"  >
+            <div class="row ml-5"  >
                 <div class="col-md-6">
                     <div class="well">
                         <div class=" task-card row  mt-4 pt-3 pb-2 pl-3 " >
                           <p> {{ task.title }} </p>
+
                         </div>
                     <small>{{ task.timestamp | timesince }} ago</small>
                         </div>
@@ -19,13 +31,13 @@
                     <div class="row mt-3">
                         <form action="{% url 'task-delete' task.id %}" method="POST">
                             {% csrf_token %}
-                        <button   class="btn btn-danger  mt-3  ml-2 p-2" type="submit" > Delete item</button>
+                        <button   class="btn btn-outline-danger  mt-3  ml-2 p-2" type="submit" > Delete </button>
                         </form>
-                         <a  href="{% url 'task-update' task.id %}" class="btn btn-info  mt-3  ml-3 p-2" > update item </a>
+                         <a  href="{% url 'task-update' task.id %}" class="btn btn-outline-info  mt-3  ml-3 p-2" > Update </a>
                         </div>
                 </div>
             </div>
     {% endfor %}
-      <a href="{% url 'task-create' %}" class="btn btn-dark mt-3  mb-2 ml-0" > Add Task</a>
+      <a href="{% url 'task-create' %}" class="btn btn-dark mt-4  mb-2 ml-5" > Add Task</a>
 
 {% endblock %}

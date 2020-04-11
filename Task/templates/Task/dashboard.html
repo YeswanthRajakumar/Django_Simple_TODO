@@ -1,0 +1,9 @@
+{% extends 'Task/base.html' %}
+<title> Home </title>
+{% block content %}
+    <h2  style="text-align: center">Home </h2>
+
+    <a  class="btn btn-success" href="{% url 'user-register' %}"> Create User </a>
+    <a  class="btn btn-info" href="{% url 'user-login' %}"> Login</a>
+
+{% endblock %}
